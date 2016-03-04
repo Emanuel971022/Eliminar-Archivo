@@ -1,0 +1,22 @@
+package vista;
+
+import java.io.File;
+
+public class RunApp {
+	public static void main(String [] args){
+		File dir = new File("src/util");
+		String[] ficheros = dir.list();
+		
+		if(ficheros != null)
+			for(String x: ficheros)
+				System.out.println(x);
+		else
+			System.out.println("No hay ficheros en el directorio");
+		
+		String n = "Boris nos trolleo con el contenido";
+		
+		System.out.println(n.replace(" ", ""));
+		System.out.println("Tamaño de la cadena con espacios: "+n.length());
+		System.out.println("Tamaño de la cadena sin espacios: "+(n.replace(" ", "").length()));
+	}
+}

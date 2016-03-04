@@ -1,0 +1,91 @@
+package ufps.poo2.archivo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ProcesaTransaccion {
+
+	public void procesarArchivo(String fileName){
+		FileReader file = null;
+		BufferedReader reader = null;
+		
+		try{
+			// Se abre el archivo para leer
+			file = new FileReader(fileName);            
+            reader = new BufferedReader(file);
+            
+            String identificador = "";
+            String contenido = "";
+            double saldo = 0;
+            
+            // Se lee cada linea
+            String line;
+            while ((line = reader.readLine()) != null) {
+            	// Si inicia con CC se crea un archivo
+            	if(line.startsWith("CC")){
+            		
+            		if(identificador.isEmpty()){
+            			identificador = line;
+            		}else{
+            			contenido += "Saldo total = "+saldo;
+            			// Escribir el contenido en el archivo
+            			writeTextFile(identificador, contenido);
+            		}
+            		contenido = "";
+            		identificador = line;          
+            		saldo = 0;
+            	
+            	}else{ // Informacion de las transacciones
+            		contenido += line + "\n";
+            		
+            		String[] lineaTransaccion = line.split("\\|");
+            		String operacion = lineaTransaccion[1];
+            		double valor = Double.parseDouble(lineaTransaccion[3]);
+            		
+            		if(operacion.equals("Retira")){
+            			saldo -= valor;
+            		}else if(operacion.equals("Consigna")){
+            			saldo += valor;
+            		}
+            		
+            	}
+            }
+            contenido += "Saldo total = "+saldo;
+            writeTextFile(identificador, contenido);
+            
+		}catch(Exception e){
+			e.printStackTrace();			
+		}finally{
+			try {
+				reader.close();
+				file.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	public void writeTextFile(String fileName, String s) {
+        FileWriter output = null;
+        try {
+            output = new FileWriter(fileName);
+            BufferedWriter writer = new BufferedWriter(output);
+            writer.write(s);
+            writer.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    // Ignore issues during closing
+                }
+            }
+        }
+    }
+	
+}

@@ -1,0 +1,7 @@
+package controlador;
+
+public class ProcesaBorrado {
+	public void readFile(String nameFile){
+		System.out.println(":v");
+	}
+}

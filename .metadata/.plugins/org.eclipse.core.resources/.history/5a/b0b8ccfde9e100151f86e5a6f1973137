@@ -1,0 +1,46 @@
+package vista;
+
+import java.io.File;
+import controlador.ProcesaBorrado;
+
+public class RunApp {
+	public static void main(String [] args){
+		ProcesaBorrado pb = new ProcesaBorrado();
+		
+		//System.out.println(pb.readFile("src/util/Enunciado.txt"));
+		
+		String files;
+		File folder = new File("src/test");
+		File[] listOfFiles = folder.listFiles();
+		
+		for(int i=0; i<listOfFiles.length; i++)
+			if(listOfFiles[i].isFile()){
+				files = listOfFiles[i].getName();
+				if(files.endsWith(".txt") || files.endsWith(".TXT"))
+					System.out.println(files);
+			}
+		
+		System.out.println("Se han terminado de listar los ficheros");
+		
+		/*
+		File dir = new File("src/util");
+		File[] ficheros = dir.listFiles();
+		
+		if(ficheros != null)
+			for(File x: ficheros){
+				System.out.println(x);
+				String val = pb.readFile(x.getName());
+				System.out.println(val);
+			}
+		else
+			System.out.println("No hay ficheros en el directorio");
+		
+		/*
+		String n = "Boris nos trolleo con el contenido";
+		
+		System.out.println(n.replace(" ", ""));
+		System.out.println("Tamaño de la cadena con espacios: "+n.length());
+		System.out.println("Tamaño de la cadena sin espacios: "+(n.replace(" ", "").length()));
+		*/
+	}
+}

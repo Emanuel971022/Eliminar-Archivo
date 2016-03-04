@@ -1,0 +1,9 @@
+CC88240345-BorisPerez
+Trans1|Retira|Ahorros-99098.98|500000
+Trans2|Consigna|Ahorros-99098.98|500000
+CC34786903-RaulRodriguez
+Trans1|Consigna|Ahorros-77043.21|1000000
+Trans2|Consigna|Ahorros-77043.21|800000
+CC34786344-SashaGrey
+Trans1|Consigna|Ahorros-77043.21|1000000
+Trans2|Retira|Ahorros-77043.21|800000

@@ -1,0 +1,7 @@
+Se requiere elaborar una aplicación que consulte dentro de una carpeta por cada
+archivo de texto que dentro incluya alguna palabra indicada por el usuario.
+De esta manera se puede llevar a cabo un proceso de borrado en lote de acuerdo
+a su contenido. Sin embargo, la eliminación solo será posible si el archivo tiene
+menos de 200 caracteres (Sin contar espacios en blanco).
+
+La aplicación deberá arrojar un listado con todos los archivos eliminados.
